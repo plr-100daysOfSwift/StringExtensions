@@ -56,4 +56,34 @@
 				XCTAssertFalse(signedInvalid.isNumeric, "isNumeric should return FALSE for \(signedInvalid)")
 
 			}
+
+			func testLines_WhenCalled_ShouldReturnArray() {
+
+				let threeLineString = """
+				This String
+				Has
+				Three Lines
+				"""
+
+				let threeLines = ["This String", "Has", "Three Lines"]
+
+				XCTAssertEqual(threeLineString.lines, threeLines)
+
+				let threeLineWithEmptyString = """
+				This String Has
+
+				Three Lines
+				"""
+
+				let threeLinesWithEmpty = ["This String Has", "", "Three Lines"]
+
+				XCTAssertEqual(threeLineWithEmptyString.lines, threeLinesWithEmpty)
+
+				let emptyString = ""
+				let empty: [String] = [""]
+
+				XCTAssertEqual(emptyString.lines, empty)
+
+			}
+
 		}
