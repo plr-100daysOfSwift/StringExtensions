@@ -18,4 +18,13 @@
 				XCTAssertEqual(result, stringWithPrefix, "Expected '\(stringWithPrefix)' but received '\(result)').")
 			}
 
+			func testIsNumeric_WhenStringIsValidAsDouble_ShouldReturnTrue() {
+				let string = "123456"
+				XCTAssertTrue(string.isNumeric, "isNumeric should return TRUE for \(string)")
+			}
+
+			func testIsNumeric_WhenStringIsInvalidAsDouble_ShouldReturnFalse() {
+				let string = "abc"
+				XCTAssertFalse(string.isNumeric, "isNumeric should return FALSE for \(string)")
+			}
 		}
