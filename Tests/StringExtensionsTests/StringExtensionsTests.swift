@@ -3,17 +3,19 @@
 
 		final class StringExtensionsTests: XCTestCase {
 
-			func testWithPrefix_WhenPrefixIsPresent_OutputEqualsInput() {
+			func testWithPrefix_WhenPrefixIsPresent_ResultEqualsInput() {
 				let prefix = "pre"
 				let stringWithPrefix = "prefixed string"
-				XCTAssertEqual(stringWithPrefix.withPrefix(prefix), stringWithPrefix, "The input and output should be identical.")
+				let result = stringWithPrefix.withPrefix(prefix)
+				XCTAssertEqual(result, stringWithPrefix, "Expected '\(stringWithPrefix)' but received '\(result)').")
 			}
 
-			func testWithPrefix_WhenPrefixIsNotPresent_OutputEqualsPrefixPlusInput() {
+			func testWithPrefix_WhenPrefixIsNotPresent_ResultEqualsPrefixPlusInput() {
 				let prefix = "pre"
 				let stringWithoutPrefix = "fixed string"
 				let stringWithPrefix = "prefixed string"
-				XCTAssertEqual(stringWithoutPrefix.withPrefix(prefix), stringWithPrefix, "The output should be the prefix plus the output.")
+				let result = stringWithoutPrefix.withPrefix(prefix)
+				XCTAssertEqual(result, stringWithPrefix, "Expected '\(stringWithPrefix)' but received '\(result)').")
 			}
 
 		}
