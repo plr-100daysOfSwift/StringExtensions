@@ -19,12 +19,41 @@
 			}
 
 			func testIsNumeric_WhenStringIsValidAsDouble_ShouldReturnTrue() {
-				let string = "123456"
-				XCTAssertTrue(string.isNumeric, "isNumeric should return TRUE for \(string)")
+				let allDigits = "123456"
+				XCTAssertTrue(allDigits.isNumeric, "isNumeric should return TRUE for \(allDigits)")
+
+				let allDigitsDecimal = "1234.56"
+				XCTAssertTrue(allDigitsDecimal.isNumeric, "isNumeric should return TRUE for \(allDigitsDecimal)")
+
+				let signed = "-123.45"
+				XCTAssertTrue(signed.isNumeric, "isNumeric should return TRUE for \(allDigitsDecimal)")
+
+				let hexadecimal = "0x1c.6"
+				XCTAssertTrue(hexadecimal.isNumeric, "isNumeric should return TRUE for \(hexadecimal)")
+
+				let exponent = "2837.5e-2"
+				XCTAssertTrue(exponent.isNumeric, "isNumeric should return TRUE for \(exponent)")
+
+				let infinity = "inf"
+				XCTAssertTrue(infinity.isNumeric, "isNumeric should return TRUE for \(infinity)")
+
+				let nan = "-nan"
+				XCTAssertTrue(nan.isNumeric, "isNumeric should return TRUE for \(nan)")
 			}
 
 			func testIsNumeric_WhenStringIsInvalidAsDouble_ShouldReturnFalse() {
+
 				let string = "abc"
 				XCTAssertFalse(string.isNumeric, "isNumeric should return FALSE for \(string)")
+
+				let stringContainingDigits = "abc123"
+				XCTAssertFalse(stringContainingDigits.isNumeric, "isNumeric should return FALSE for \(stringContainingDigits)")
+
+				let whitespace = " 123456" // Includes whitespace
+				XCTAssertFalse(whitespace.isNumeric, "isNumeric should return FALSE for \(whitespace)")
+
+				let signedInvalid = "±2.0" // Invalid character
+				XCTAssertFalse(signedInvalid.isNumeric, "isNumeric should return FALSE for \(signedInvalid)")
+
 			}
 		}
